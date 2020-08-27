@@ -34,15 +34,15 @@ def check_for_correct_arguments(args):
         raise Exception(
             '''You have passed a wrong number of arguments,
             pass an api_key after calling the script''')
+
+    pattern = "^[\w:-]+$"
+    argument = sys.argv[1]
+    if(re.search(pattern, argument)):
+        return argument
     else:
-        pattern = "^\w+$"
-        config_key = sys.argv[1]
-        if(re.search(pattern, config_key)):
-            return config_key
-        else:
-            raise Exception(
-                '''The key you have passed doesn't comply with the standards,
-                try a different one''')
+        raise Exception(
+            '''The key you have passed doesn't comply with the standards,
+            try a different one''')
 
 
 if __name__ == "__main__":
