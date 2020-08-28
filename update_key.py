@@ -28,7 +28,7 @@ def read_config():
 
     return userinfo['api_key']
 
-def check_for_correct_arguments(args):
+def check_for_one_correct_argument(args):
 
     if(len(args) == 1 or len(args) > 2):
         raise Exception(
@@ -46,5 +46,5 @@ def check_for_correct_arguments(args):
 
 
 if __name__ == "__main__":
-    config_key = check_for_correct_arguments(sys.argv)
+    config_key = check_for_one_correct_argument(sys.argv)
     update_config(config_key)

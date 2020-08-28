@@ -1,5 +1,5 @@
 from googleapiclient.discovery import build
-from update_key import check_for_correct_arguments, read_config
+from update_key import check_for_one_correct_argument, read_config
 import sys
 import requests
 import os
@@ -29,10 +29,10 @@ def save_images_to_file(searched_phrase, list_of_images):
     for index,item in enumerate(list_of_images):
         response = requests.get(item['link'])
         if response.ok:
-            with open(os.path.join(image_dir,f'{searched_phrase}{index}.jpg'),'wb') as f:
+            with open(os.path.join(image_dir,f'{searched_phrase}{index+1}.jpg'),'wb') as f:
                 f.write(response.content)
 
 
 if __name__ == "__main__":
-    searched_phrase = check_for_correct_arguments(sys.argv)
+    searched_phrase = check_for_one_correct_argument(sys.argv)
     main(searched_phrase)
