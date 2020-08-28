@@ -44,4 +44,4 @@ After running<br><br>
         python crawler.py youtube
 
 in directory images there has been created a new directory called youtube. In the screenshot you can see the tree of this project and the first picture that popped up after running this script.<br><br>
-![](git_images\youtube.png)
+![](git_images/youtube.png)
