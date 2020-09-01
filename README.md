@@ -35,6 +35,15 @@ That will update the api_key.ini config file and make the application usable. Ne
 
 If you would like to search a phrase consisting of several words use an uncderscore instead of a space.
 
+Update:
+Now you can also specify larger number of photos to download by adding a second argument like this (Note: number has to be divisible by 10):
+  
+  <br>
+
+
+
+        python crawler.py {searched_phrase} {number_of_photos}
+
 ## Example
 
 ---

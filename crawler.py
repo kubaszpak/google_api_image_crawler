@@ -4,7 +4,7 @@ import sys
 import requests
 import os
 
-def main(searched_phrase):
+def main(searched_phrase, number):
 
     api_key = read_config()
 
@@ -12,9 +12,15 @@ def main(searched_phrase):
 
     cx = '65d9bd572fc30c8c1'
 
-    result = service.list(q=searched_phrase.replace('_',' '), cx=cx, searchType='image').execute()
+    images = []
 
-    save_images_to_file(searched_phrase, result['items'])
+    for i in range(1,int(number),10):
+
+        result = service.list(q=searched_phrase.replace('_',' '), cx=cx, searchType='image',start = i).execute()
+
+        images += result['items']
+
+    save_images_to_file(searched_phrase, images)
 
 def save_images_to_file(searched_phrase, list_of_images):
 
@@ -34,5 +40,10 @@ def save_images_to_file(searched_phrase, list_of_images):
 
 
 if __name__ == "__main__":
-    searched_phrase = check_for_one_correct_argument(sys.argv)
-    main(searched_phrase)
+    response = check_for_one_correct_argument()
+    print(sys.argv)
+    if(response == 'There is one correct argument'):
+        main(sys.argv[1],10)
+    elif(response == 'There are two correct arguments'):
+        main(sys.argv[1],sys.argv[2])
+    
